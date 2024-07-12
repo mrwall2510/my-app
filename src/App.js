@@ -1,25 +1,30 @@
 import logo from './logo.svg';
 import './App.css';
+import{useState} from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+function PainDot(){
+  const [pos, setPos] = useState({});
+  const styles = {
+    position: "absolute",
+    top: "0px",
+    left: "0px",
+    height: "100px",
+    aspectRatio: "1/1",
+    borderRadius: "50%",
+    background: "pink",
+    transform: "translateX(-50%) translateY(-50%)",
+  };
+  return(
+    <div
+    onTouchStart={(event)=>setPos(event.changedTouches[0])}
+    className="dot-container">
+      <h1>X: {pos.pageX}</h1>
+      <h1>Y: {pos.pageY}</h1>
+      <div style={styles}></div>
     </div>
   );
 }
 
-export default App;
+export default PainDot;
+
+
